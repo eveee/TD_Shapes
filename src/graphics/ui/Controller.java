@@ -6,6 +6,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import javax.swing.JPanel;
+
 public class Controller implements MouseListener, MouseMotionListener, KeyListener
 {
 	private Object model;
@@ -37,16 +39,16 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 		return this.model;
 	}
 	
-	public void mousePressed(MouseEvent e)
-	{
+	public void mousePressed(MouseEvent e){
 	}
 
 	public void mouseReleased(MouseEvent e)
 	{
 	}
 
-	public void mouseClicked(MouseEvent e)
-	{
+	public void mouseClicked(MouseEvent e){
+		System.out.printf("X: " + e.getX() + " Y: " + e.getY());
+		System.out.println("");
 	}
 	
 	public void mouseEntered(MouseEvent e)

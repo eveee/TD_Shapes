@@ -1,5 +1,6 @@
 package graphics.shapes.ui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -90,16 +91,41 @@ public class ShapeDraftman implements ShapeVisitor {
 		if (color.filled) {
 			this.g.setColor(color.filledColor);
 			this.g.fillRect(t.getLoc().x-2, t.getLoc().y-hgt, wdt+2, hgt+2);
+			
+			if (selection.isSelected()) {
+				this.g.setColor(selection.selectionColor);
+				this.g.drawRect(t.getLoc().x-2, t.getLoc().y-hgt, wdt+2, hgt+2);
+				this.g.drawString(t.getText(), t.getLoc().x, t.getLoc().y);
+				
+			} else if (color.stroked) {
+				this.g.setColor(color.strokedColor);
+				this.g.drawRect(t.getLoc().x-2, t.getLoc().y-hgt, wdt+2, hgt+2);
+				this.g.drawString(t.getText(), t.getLoc().x, t.getLoc().y);
+				
+			} else {
+				this.g.setColor(color.strokedColor);
+				this.g.drawString(t.getText(), t.getLoc().x, t.getLoc().y);
+			}	
+			
+		} else {
+		
+				if (selection.isSelected()) {
+					this.g.setColor(selection.selectionColor);
+					this.g.drawRect(t.getLoc().x-2, t.getLoc().y-hgt, wdt+2, hgt+2);
+					this.g.drawString(t.getText(), t.getLoc().x, t.getLoc().y);
+					
+				} else if (color.stroked) {
+					this.g.setColor(color.strokedColor);
+					this.g.drawRect(t.getLoc().x-2, t.getLoc().y-hgt, wdt+2, hgt+2);
+					this.g.drawString(t.getText(), t.getLoc().x, t.getLoc().y);
+					
+				} else {
+					this.g.setColor(color.strokedColor);
+					this.g.drawString(t.getText(), t.getLoc().x, t.getLoc().y);
+				}	
+				
 		}
 		
-		if (selection.isSelected()) 
-			this.g.setColor(selection.selectionColor);
-		else if (color.stroked) 
-			this.g.setColor(color.strokedColor);
-		
-		
-		this.g.drawRect(t.getLoc().x-2, t.getLoc().y-hgt, wdt+2, hgt+2);
-		this.g.drawString(t.getText(), t.getLoc().x, t.getLoc().y);
 	}
 
 	public void visitCollection(SCollection coll) {
@@ -108,7 +134,8 @@ public class ShapeDraftman implements ShapeVisitor {
 	}
 	
 	public void drawHandler(Rectangle bounds){
-		
+		this.g.setColor(Color.green);
+		this.g.drawRect(bounds.x,bounds.y,bounds.width,bounds.height);
 	}
 
 	public void setGraphics(Graphics2D g) {
