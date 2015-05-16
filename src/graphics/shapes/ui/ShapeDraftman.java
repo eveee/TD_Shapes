@@ -1,5 +1,8 @@
 package graphics.shapes.ui;
 
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -53,12 +56,50 @@ public class ShapeDraftman implements ShapeVisitor {
 	}
 
 	public void visitCircle(SCircle c) {
-		c.accept(this);
+		Rectangle bounds = c.getBounds();
+		ColorAttribute color = (ColorAttribute) c.getAttribute(ColorAttribute.id);
+		SelectionAttribute selection = (SelectionAttribute) c.getAttribute(SelectionAttribute.id);
+		
+		if (color == null) color = DEFAULT_COLOR_ATTRIBUTES;
+		if (selection == null) selection = DEFAULT_SELECTION_ATTRIBUTES;
+		
+		if (color.filled) {
+			this.g.setColor(color.filledColor);
+			this.g.fillOval(bounds.x,bounds.y,bounds.width,bounds.height);
+		}
+		
+		if (selection.isSelected()) 
+			this.g.setColor(selection.selectionColor);
+		else if (color.stroked) 
+			this.g.setColor(color.strokedColor);
+		
+		this.g.drawOval(bounds.x,bounds.y,bounds.width,bounds.height);
 	}
 
 	public void visitText(SText t) {
-		t.accept(this);
 		
+		ColorAttribute color = (ColorAttribute) t.getAttribute(ColorAttribute.id);
+		SelectionAttribute selection = (SelectionAttribute) t.getAttribute(SelectionAttribute.id);
+		FontMetrics metrics = g.getFontMetrics(((FontAttribute)t.getAttribute(FontAttribute.id)).getFont());
+		int wdt = metrics.stringWidth(t.getText());
+		int hgt = metrics.getHeight();
+		
+		if (color == null) color = DEFAULT_COLOR_ATTRIBUTES;
+		if (selection == null) selection = DEFAULT_SELECTION_ATTRIBUTES;
+		
+		if (color.filled) {
+			this.g.setColor(color.filledColor);
+			this.g.fillRect(t.getLoc().x-2, t.getLoc().y-hgt, wdt+2, hgt+2);
+		}
+		
+		if (selection.isSelected()) 
+			this.g.setColor(selection.selectionColor);
+		else if (color.stroked) 
+			this.g.setColor(color.strokedColor);
+		
+		
+		this.g.drawRect(t.getLoc().x-2, t.getLoc().y-hgt, wdt+2, hgt+2);
+		this.g.drawString(t.getText(), t.getLoc().x, t.getLoc().y);
 	}
 
 	public void visitCollection(SCollection coll) {

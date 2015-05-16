@@ -1,7 +1,10 @@
 package graphics.shapes;
 
+import graphics.shapes.attributes.FontAttribute;
 import graphics.shapes.ui.ShapeVisitor;
 
+import java.awt.FontMetrics;
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 
@@ -9,6 +12,10 @@ public class SText extends Shape {
 
 	private String text;
 	private Point loc;
+	
+	public SText(){
+		
+	}
 	
 	public SText(Point loc,String text){
 		this.text=text;
@@ -37,12 +44,11 @@ public class SText extends Shape {
 	}
 
 	public Rectangle getBounds() {
-		Rectangle bounds = new Rectangle(this.loc.x, this.loc.y, this.text.length(), 1);
-		return bounds;
+		return null;
 	}
 
 	public void accept(ShapeVisitor v) {
-		
+		v.visitText(this);
 	}
 
 }

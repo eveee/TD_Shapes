@@ -41,6 +41,6 @@ public class SCircle extends Shape {
 	}
 	
 	public void accept(ShapeVisitor v){
-		
+		v.visitCircle(this);
 	}
 }
