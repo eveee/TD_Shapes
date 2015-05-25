@@ -2,7 +2,8 @@ package graphics.shapes;
 
 import graphics.shapes.ui.ShapeVisitor;
 
-import java.awt.*;
+import java.awt.Point;
+import java.awt.Rectangle;
 
 public class SCircle extends Shape {
 	

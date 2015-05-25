@@ -1,12 +1,12 @@
 package graphics.shapes;
 
 import graphics.shapes.attributes.Attribute;
-import graphics.shapes.attributes.ColorAttribute;
-import graphics.shapes.attributes.FontAttribute;
 import graphics.shapes.ui.ShapeVisitor;
 
-import java.awt.*;
-import java.util.*;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.util.Map;
+import java.util.TreeMap;
 
 public abstract class Shape {
 	

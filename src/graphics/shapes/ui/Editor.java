@@ -55,11 +55,11 @@ public class Editor extends JFrame
 		c.addAttribute(new SelectionAttribute());
 		this.model.add(c);
 		
-		SText t= new SText(new Point(100,100),"hello");
+		/*SText t= new SText(new Point(100,100),"hello");
 		t.addAttribute(new ColorAttribute(false,true,Color.YELLOW,Color.BLUE));
 		t.addAttribute(new FontAttribute());
 		t.addAttribute(new SelectionAttribute());
-		this.model.add(t);
+		this.model.add(t);*/
 		
 		SCollection sc = new SCollection();
 		sc.addAttribute(new SelectionAttribute());

@@ -1,18 +1,23 @@
 package graphics.ui;
 
+import graphics.shapes.SCollection;
+import graphics.shapes.Shape;
+import graphics.shapes.attributes.Attribute;
+import graphics.shapes.attributes.SelectionAttribute;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
-import javax.swing.JPanel;
+import java.util.Iterator;
 
 public class Controller implements MouseListener, MouseMotionListener, KeyListener
 {
 	private Object model;
 	private View view;
-		
+	protected int x;
+	protected int y;
 	
 	public Controller(Object newModel)
 	{
@@ -40,6 +45,8 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 	}
 	
 	public void mousePressed(MouseEvent e){
+		this.x = e.getX();
+		this.y = e.getY();
 	}
 
 	public void mouseReleased(MouseEvent e)
@@ -47,9 +54,28 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 	}
 
 	public void mouseClicked(MouseEvent e){
-		System.out.printf("X: " + e.getX() + " Y: " + e.getY());
-		System.out.println("");
+		
+		this.x = e.getX();
+		this.y = e.getY();
+		
+		Iterator<Shape> it = ((SCollection) this.model).iterator();
+	     
+	     while (it.hasNext()){
+	    	 Shape nextShape = it.next();
+	     
+	    	 if (nextShape.getBounds().contains(this.x, this.y)){
+	    		 
+	    		 if(((SelectionAttribute) nextShape.getAttribute(SelectionAttribute.id)).isSelected())
+	    			((SelectionAttribute) nextShape.getAttribute(SelectionAttribute.id)).unselect();
+	    		else
+	    		 	((SelectionAttribute) nextShape.getAttribute(SelectionAttribute.id)).select();
+	    		 
+	    		 System.out.println(((SelectionAttribute) nextShape.getAttribute(SelectionAttribute.id)).isSelected());
+	    	 }
+	     }
+		
 	}
+	     
 	
 	public void mouseEntered(MouseEvent e)
 	{
@@ -63,9 +89,26 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 	{
 	}
 	
-	public void mouseDragged(MouseEvent evt)
-	{
+	public void mouseDragged(MouseEvent e){
+		/* int dx = e.getX() - this.x;
+	     int dy = e.getY() - this.y;
+	     
+	     Iterator<Shape> it = ((SCollection) this.model).iterator();
+	     
+	     while (it.hasNext()){
+	    	 Shape nextShape = it.next();
+	     
+	      if (nextShape.getBounds().contains(this.x, this.y)) {
+	    	  nextShape.getBounds().x += dx;
+	    	  nextShape.getBounds().y += dy;
+	      }
+	      
+	      x += dx;
+	      y += dy;
+	      
+	     }*/
 	}
+
 	
 	public void keyTyped(KeyEvent evt)
 	{

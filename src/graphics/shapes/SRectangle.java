@@ -1,11 +1,10 @@
 package graphics.shapes;
 
-import graphics.shapes.attributes.Attribute;
-import graphics.shapes.attributes.ColorAttribute;
-import graphics.shapes.attributes.FontAttribute;
 import graphics.shapes.ui.ShapeVisitor;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
 
 public class SRectangle extends Shape {
 	

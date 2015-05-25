@@ -1,6 +1,6 @@
 package graphics.shapes.attributes;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class ColorAttribute extends Attribute {
 	

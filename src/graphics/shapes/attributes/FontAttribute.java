@@ -1,9 +1,12 @@
 package graphics.shapes.attributes;
 
-import java.awt.*;
-import java.awt.font.FontRenderContext;
+import graphics.shapes.ui.ShapesView;
+import graphics.ui.View;
 
-import javax.swing.JPanel;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.font.FontRenderContext;
 
 public class FontAttribute extends Attribute {
 	
@@ -22,11 +25,6 @@ public class FontAttribute extends Attribute {
 		return this.font;
 	}
 	
-	/*public Rectangle getBounds(String s){
-		FontRenderContext frc = DEFAULT_GRAPHICS.getFontRenderContext();
-		return font.getStringBounds(s, frc).getBounds();
-	}*/
-
 	public String getId() {
 		return id;
 	}

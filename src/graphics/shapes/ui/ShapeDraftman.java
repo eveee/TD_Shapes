@@ -1,25 +1,20 @@
 package graphics.shapes.ui;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-
-
-import java.util.Iterator;
-
 import graphics.shapes.SCircle;
 import graphics.shapes.SCollection;
 import graphics.shapes.SRectangle;
 import graphics.shapes.SText;
 import graphics.shapes.Shape;
-import graphics.shapes.attributes.Attribute;
 import graphics.shapes.attributes.ColorAttribute;
 import graphics.shapes.attributes.FontAttribute;
 import graphics.shapes.attributes.SelectionAttribute;
 import graphics.ui.Controller;
+
+import java.awt.Color;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.util.Iterator;
 
 public class ShapeDraftman implements ShapeVisitor {
 	
@@ -142,7 +137,6 @@ public class ShapeDraftman implements ShapeVisitor {
 		
 		this.g = g;
 	}
-
 	
 	public Controller defaultController(Object model){
 		return new ShapesController(model);

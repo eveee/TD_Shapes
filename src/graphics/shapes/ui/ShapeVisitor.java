@@ -1,6 +1,9 @@
 package graphics.shapes.ui;
 
-import graphics.shapes.*;
+import graphics.shapes.SCircle;
+import graphics.shapes.SCollection;
+import graphics.shapes.SRectangle;
+import graphics.shapes.SText;
 
 public interface ShapeVisitor {
 	

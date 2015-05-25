@@ -2,8 +2,10 @@ package graphics.shapes;
 
 import graphics.shapes.ui.ShapeVisitor;
 
-import java.awt.*;
-import java.util.*;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class SCollection extends Shape {
 
@@ -53,30 +55,30 @@ public class SCollection extends Shape {
 
 	public Rectangle getBounds() {
 	
-		int x1=((SCollection) this.shapes.get(0)).getLoc().x; int x2=((SCollection) this.shapes.get(0)).getLoc().x;
-		int y1=((SCollection) this.shapes.get(0)).getLoc().y; int y2=((SCollection) this.shapes.get(0)).getLoc().y;
+		int x1=(this.shapes.get(0)).getLoc().x; int x2=(this.shapes.get(0)).getLoc().x;
+		int y1=(this.shapes.get(0)).getLoc().y; int y2=(this.shapes.get(0)).getLoc().y;
 		
 		for (int i=1; i<this.shapes.size(); i++){
-			if (((SCollection) this.shapes.get(i)).getLoc().x<x1)
-				x1=((SCollection) this.shapes.get(i)).getLoc().x;
+			if ((this.shapes.get(i)).getLoc().x<x1)
+				x1=(this.shapes.get(i)).getLoc().x;
 		}
 		
 		for (int i=1; i<this.shapes.size(); i++){
-			if (((SCollection) this.shapes.get(i)).getLoc().x>x2)
-				x2=((SCollection) this.shapes.get(i)).getLoc().x;
+			if ((this.shapes.get(i)).getLoc().x>x2)
+				x2=(this.shapes.get(i)).getLoc().x;
 		}
 		
 		for (int i=1; i<this.shapes.size(); i++){
-			if (((SCollection) this.shapes.get(i)).getLoc().y<y1)
-				y1=((SCollection) this.shapes.get(i)).getLoc().y;
+			if ((this.shapes.get(i)).getLoc().y<y1)
+				y1=(this.shapes.get(i)).getLoc().y;
 		}
 		
 		for (int i=1; i<this.shapes.size(); i++){
-			if (((SCollection) this.shapes.get(i)).getLoc().y>y2)
-				y2=((SCollection) this.shapes.get(i)).getLoc().y;
+			if ((this.shapes.get(i)).getLoc().y>y2)
+				y2=(this.shapes.get(i)).getLoc().y;
 		}
 		
-		Rectangle bounds = new Rectangle(x1,y2,x2-x1,y2-y1);
+		Rectangle bounds = new Rectangle(x1,y1,x2-x1,y2-y1);
 		return bounds;
 		
 	}

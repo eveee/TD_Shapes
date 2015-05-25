@@ -1,18 +1,22 @@
 package graphics.shapes.ui;
 
+import graphics.shapes.Shape;
+import graphics.ui.Controller;
+import graphics.ui.View;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
-import graphics.shapes.Shape;
-import graphics.ui.View;
+import java.awt.event.MouseEvent;
 
 public class ShapesView extends View{
 
 	ShapeDraftman draftman;
+	private ShapesController scontroller;
 	
 	public ShapesView(Object model) {
 		super(model);
 		this.draftman = new ShapeDraftman(this);
+		this.scontroller = new ShapesController(model);
 		
 	}
 
@@ -26,5 +30,6 @@ public class ShapesView extends View{
 		if (model == null) return;
 		
 		model.accept(this.draftman);
+		this.scontroller.getTarget();
 	}
 }
