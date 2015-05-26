@@ -124,8 +124,21 @@ public class ShapeDraftman implements ShapeVisitor {
 	}
 
 	public void visitCollection(SCollection coll) {
+		SelectionAttribute selection = (SelectionAttribute) coll.getAttribute(SelectionAttribute.id);
 		Iterator<Shape> it = coll.iterator();
-		while (it.hasNext()) it.next().accept(this);
+		if (selection.isSelected()) {
+			while (it.hasNext())
+				((SelectionAttribute) it.next().getAttribute(SelectionAttribute.id)).select();
+		}
+		
+		/*else {
+			while (it.hasNext())
+				((SelectionAttribute) it.next().getAttribute(SelectionAttribute.id)).unselect();
+		}*/
+		
+		Iterator<Shape> ite = coll.iterator();
+		while (ite.hasNext())
+			ite.next().accept(this);
 	}
 	
 	public void drawHandler(Rectangle bounds){

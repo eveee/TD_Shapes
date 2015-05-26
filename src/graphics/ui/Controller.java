@@ -5,6 +5,7 @@ import graphics.shapes.Shape;
 import graphics.shapes.attributes.Attribute;
 import graphics.shapes.attributes.SelectionAttribute;
 
+import java.awt.Container;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -14,7 +15,7 @@ import java.util.Iterator;
 
 public class Controller implements MouseListener, MouseMotionListener, KeyListener
 {
-	private Object model;
+	protected Object model;
 	private View view;
 	protected int x;
 	protected int y;
@@ -54,8 +55,7 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 	}
 
 	public void mouseClicked(MouseEvent e){
-		
-		this.x = e.getX();
+		/*this.x = e.getX();
 		this.y = e.getY();
 		
 		Iterator<Shape> it = ((SCollection) this.model).iterator();
@@ -66,13 +66,14 @@ public class Controller implements MouseListener, MouseMotionListener, KeyListen
 	    	 if (nextShape.getBounds().contains(this.x, this.y)){
 	    		 
 	    		 if(((SelectionAttribute) nextShape.getAttribute(SelectionAttribute.id)).isSelected())
-	    			((SelectionAttribute) nextShape.getAttribute(SelectionAttribute.id)).unselect();
+	    			((SelectionAttribute) nextShape.getAttribute(SelectionAttribute.id)).unselect(); 
 	    		else
 	    		 	((SelectionAttribute) nextShape.getAttribute(SelectionAttribute.id)).select();
 	    		 
 	    		 System.out.println(((SelectionAttribute) nextShape.getAttribute(SelectionAttribute.id)).isSelected());
+	    		 this.view.invalidate();
 	    	 }
-	     }
+	     }*/
 		
 	}
 	     

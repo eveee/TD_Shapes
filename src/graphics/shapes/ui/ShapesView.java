@@ -17,6 +17,10 @@ public class ShapesView extends View{
 		super(model);
 		this.draftman = new ShapeDraftman(this);
 		this.scontroller = new ShapesController(model);
+		this.scontroller.setView(this);
+		this.addMouseListener(this.scontroller);
+		this.addMouseMotionListener(this.scontroller);
+		this.addKeyListener(this.scontroller);
 		
 	}
 
@@ -30,6 +34,5 @@ public class ShapesView extends View{
 		if (model == null) return;
 		
 		model.accept(this.draftman);
-		this.scontroller.getTarget();
 	}
 }
