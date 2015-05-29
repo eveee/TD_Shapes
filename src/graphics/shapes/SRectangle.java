@@ -7,48 +7,50 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 public class SRectangle extends Shape {
-	
-	
+
 	private Rectangle rect;
-	
-	public SRectangle(){
+
+	public SRectangle() {
 
 		this.rect = new Rectangle();
 	}
-	
-	public SRectangle(Point loc,int width,int height){
-		Dimension d=new Dimension(width,height);
-		this.rect=new Rectangle(loc,d);
-		
+
+	public SRectangle(Point loc, int width, int height) {
+		Dimension d = new Dimension(width, height);
+		this.rect = new Rectangle(loc, d);
+
 	}
-	
-	public Rectangle getRect(){
+
+	public Rectangle getRect() {
 		return this.rect;
 	}
-	
-	public Point getLoc(){
+
+	public Point getLoc() {
 		Point loc = new Point();
-		loc.x=this.rect.x;
-		loc.y=this.rect.y;
+		loc.x = this.rect.x;
+		loc.y = this.rect.y;
 		return loc;
 	}
-	
-	public void setLoc(Point loc){
-		this.rect.x=loc.x;
-		this.rect.y=loc.y;
+
+	public void setLoc(Point loc) {
+		this.rect.x = loc.x;
+		this.rect.y = loc.y;
 	}
-	
-	public void translate(int dx, int dy){
-		this.rect.x=this.rect.x+dx;
-		this.rect.y=this.rect.y+dy;
+
+	public void translate(int dx, int dy) {
+		this.rect.x = this.rect.x + dx;
+		this.rect.y = this.rect.y + dy;
 	}
-	
-	public Rectangle getBounds(){
+
+	public Rectangle getBounds() {
 		return (Rectangle) this.rect.clone();
 	}
-	
-	
-	public void accept(ShapeVisitor v){
+
+	public void accept(ShapeVisitor v) {
 		v.visitRectangle(this);
+	}
+	
+	public boolean isCollection() {
+		return false;
 	}
 }

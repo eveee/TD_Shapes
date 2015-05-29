@@ -14,68 +14,63 @@ import java.awt.Point;
 
 import javax.swing.JFrame;
 
-public class Editor extends JFrame
-{
+@SuppressWarnings("serial")
+public class Editor extends JFrame {
 	ShapesView sview;
 	SCollection model;
-	
-	public Editor()
-	{	
+
+	public Editor() {
 		super("Shapes Editor");
 
-		this.addWindowListener(new java.awt.event.WindowAdapter()
-		{
-			public void windowClosing(java.awt.event.WindowEvent evt)
-			{
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
+			public void windowClosing(java.awt.event.WindowEvent evt) {
 				System.exit(0);
 			}
 		});
-		
+
 		this.buildModel();
-		
+
 		this.sview = new ShapesView(this.model);
-		this.sview.setPreferredSize(new Dimension(300,300));
+		this.sview.setPreferredSize(new Dimension(300, 300));
 		this.getContentPane().add(this.sview, java.awt.BorderLayout.CENTER);
-		
+
 	}
 
-	
-	private void buildModel()
-	{
+	private void buildModel() {
 		this.model = new SCollection();
 		this.model.addAttribute(new SelectionAttribute());
-		
-		SRectangle r = new SRectangle(new Point(10,10),20,30);
-		r.addAttribute(new ColorAttribute(false,true,Color.BLUE,Color.BLUE));
+
+		SRectangle r = new SRectangle(new Point(10, 10), 20, 30);
+		r.addAttribute(new ColorAttribute(false, true, Color.BLUE, Color.BLUE));
 		r.addAttribute(new SelectionAttribute());
 		this.model.add(r);
-		
-		SCircle c = new SCircle(new Point(100,100),100);
-		c.addAttribute(new ColorAttribute(true,true,Color.pink,Color.WHITE));
+
+		SCircle c = new SCircle(new Point(100, 100), 100);
+		c.addAttribute(new ColorAttribute(true, true, Color.pink, Color.WHITE));
 		c.addAttribute(new SelectionAttribute());
 		this.model.add(c);
-		
-		/*SText t= new SText(new Point(100,100),"hello");
-		t.addAttribute(new ColorAttribute(false,true,Color.YELLOW,Color.BLUE));
+
+		SText t = new SText(new Point(100, 100), "hello");
+		t.addAttribute(new ColorAttribute(false, true, Color.YELLOW, Color.BLUE));
 		t.addAttribute(new FontAttribute());
 		t.addAttribute(new SelectionAttribute());
-		this.model.add(t);*/
-		
+		this.model.add(t);
+
 		SCollection sc = new SCollection();
 		sc.addAttribute(new SelectionAttribute());
-		r= new SRectangle(new Point(20,30),30,30);
-		r.addAttribute(new ColorAttribute(true,false,Color.WHITE,Color.BLUE));
+		r = new SRectangle(new Point(20, 30), 30, 30);
+		r.addAttribute(new ColorAttribute(true, false, Color.WHITE, Color.BLUE));
 		r.addAttribute(new SelectionAttribute());
 		sc.add(r);
-		c = new SCircle(new Point(150,100),20);
-		c.addAttribute(new ColorAttribute(false,true,Color.BLUE,Color.DARK_GRAY));
+		c = new SCircle(new Point(150, 100), 20);
+		c.addAttribute(new ColorAttribute(false, true, Color.BLUE,
+				Color.DARK_GRAY));
 		c.addAttribute(new SelectionAttribute());
 		sc.add(c);
 		this.model.add(sc);
 	}
-	
-	public static void main(String[] args)
-	{
+
+	public static void main(String[] args) {
 		Editor self = new Editor();
 		self.pack();
 		self.setVisible(true);
